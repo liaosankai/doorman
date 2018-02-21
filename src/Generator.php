@@ -12,6 +12,7 @@ class Generator
     protected $uses = 1;
     protected $email;
     protected $expiry;
+    protected $madeBy;
 
     /**
      * @var \Clarkeash\Doorman\DoormanManager
@@ -58,6 +59,18 @@ class Generator
 
         return $this;
     }
+    
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function madeBy(string $name)
+    {
+        $this->madeBy = $name;
+
+        return $this;
+    }
 
     /**
      * @param \Carbon\Carbon $date
@@ -92,6 +105,7 @@ class Generator
         $invite->code = $this->manager->code();
         $invite->for = $this->email;
         $invite->max = $this->uses;
+        $invite->made_by = $this->madeBy;
         $invite->valid_until = $this->expiry;
 
         return $invite;
