@@ -69,6 +69,11 @@ Make a single generic invite code with 1 redemption, and no expiry.
 Doorman::generate()->make();
 ```
 
+Make a single generic invite code with 1 redemption, no expiry and mark who make it.
+```php
+Doorman::generate()->madeBy('foobar')->make();
+```
+
 Make 5 generic invite codes with 1 redemption each, and no expiry.
 ```php
 Doorman::generate()->times(5)->make();
