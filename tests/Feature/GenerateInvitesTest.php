@@ -48,6 +48,18 @@ class GenerateInvitesTest extends TestCase
     /**
      * @test
      */
+    public function it_has_who_make_it_mark()
+    {
+        Doorman::generate()->madeBy('foobar')->make();
+
+        $invite = Invite::first();
+
+        Assert::assertEquals('foobar', $invite->made_by);
+    }
+
+    /**
+     * @test
+     */
     public function it_can_have_multiple_uses()
     {
         Doorman::generate()->uses(10)->make();
