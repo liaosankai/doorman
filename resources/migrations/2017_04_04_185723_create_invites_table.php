@@ -17,6 +17,7 @@ class CreateInvitesTable extends Migration
             $table->increments('id');
             $table->string('code')->unique();
             $table->string('for')->nullable();
+            $table->string('made_by')->nullable();
             $table->integer('max')->default(1);
             $table->integer('uses')->default(0);
             $table->timestamp('valid_until')->nullable();
